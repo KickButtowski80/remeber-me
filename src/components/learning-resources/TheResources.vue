@@ -1,6 +1,7 @@
 <template>
   <base-card>
-    <base-button v-for="tab in tabs" :key="tab" @click="currentTab = tab">
+    <base-button
+     v-for="tab in tabs" :key="tab" @click="currentTab = tab">
       {{ tab }}
     </base-button>
   </base-card>

@@ -2,6 +2,7 @@
   <the-header>
     <template v-slot:header>
       <h1 style="color: white">Remeber Me</h1>
+      <boy-avatar/>
     </template>
   </the-header>
   <the-resources></the-resources>
@@ -11,9 +12,9 @@
 
 import TheHeader from "./components/layout/TheHeader.vue";
 import TheResources from './components/learning-resources/TheResources.vue'
-
+import BoyAvatar from './components/Icons/BoyAvatar.vue';
 export default {
-  components: { TheResources, TheHeader },
+  components: { TheResources, TheHeader, BoyAvatar },
   data() {
     return {
       appTitle: "Remeber Me",     

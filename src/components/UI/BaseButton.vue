@@ -15,15 +15,15 @@ export default {
 button {
   padding: 0.75rem 1.5rem;
   font-family: inherit;
-  background-color: #3a0061;
-  border: 1px solid #3a0061;
+  background-color: #7302be;
+  border: 1px solid #412b4f;
   color: white;
   cursor: pointer;
 }
 
 button:hover,
 button:active {
-  background-color: #7f49a3;
+  background-color: #9564b5;
   border-color: #270041;
 }
 

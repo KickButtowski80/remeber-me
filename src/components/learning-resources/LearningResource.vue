@@ -9,7 +9,9 @@
         </base-button>
       </header>
       <p>{{ description }}</p>
-      <nav><a :href="link">View Resoruces</a></nav>
+      <nav>
+        <a :href="link">View Resoruces</a>
+      </nav>
     </base-card>
   </li>
 </template>

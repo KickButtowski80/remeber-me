@@ -1,15 +1,17 @@
 <template>
   <base-card>
     <base-button
-     v-for="tab in tabs" :key="tab" 
-     @click="currentTab = tab"
-       :class="['tab-button', { active: currentTab === tab }]">
+      v-for="tab in tabs"
+      :key="tab"
+      @click="currentTab = tab"
+      :mode="setMode(tab)"
+    >
       {{ tab }}
     </base-button>
   </base-card>
-  <base-card>
+  
     <component :is="currentTab"></component>
-  </base-card>
+  
 </template>
 
 <script>
@@ -41,6 +43,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    setMode(tab) {
+      return { button: this.currentTab === tab, flat: this.currentTab !== tab };
+    },
   },
 };
 </script>

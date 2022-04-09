@@ -23,7 +23,7 @@ button {
 
 button:hover,
 button:active {
-  background-color: #9564b5;
+  background-color: #3c0c5c;
   border-color: #270041;
 }
 
@@ -35,6 +35,6 @@ button:active {
 
 .flat:hover,
 .flat:active {
-  background-color: #edd2ff;
+  background-color: #846187;
 }
 </style>

@@ -1,4 +1,21 @@
 <template>
+  <base-dialog
+    v-if="inputisInvalid"
+    title="invalid input"
+    @close="confirmError"
+  >
+    <template v-slot:default>
+      <p>Unfortunately, at least one input value is invalid</p>
+      <p>
+        Please check all inputs and be sure, you added few charcters in each
+        input field
+      </p>
+    </template>
+
+    <template v-slot:actions>
+      <base-button @click="confirmError">Okay</base-button>
+    </template>
+  </base-dialog>
   <base-card>
     <form v-on:submit.prevent="submitData">
       <div class="form-control">
@@ -36,20 +53,44 @@ export default {
       title: "",
       description: "",
       link: "",
+      inputisInvalid: false,
     };
   },
   methods: {
     submitData() {
+      console.log("submit data ");
+      if (!this.validateFields()) {
+        this.inputisInvalid = true;
+        return;
+      }
+
       const title = this.title;
       const description = this.description;
       const link = this.link;
+
       this.addResource(title, description, link);
       this.clearFields();
+    },
+
+    validateFields() {
+      if (
+        this.check4EmptyField(this.title) ||
+        this.check4EmptyField(this.description) ||
+        this.check4EmptyField(this.url)
+      ) {
+        return false;
+      }
+    },
+    check4EmptyField(fieldName) {
+      return fieldName.trim() === "";
     },
     clearFields() {
       this.title = "";
       this.description = "";
       this.link = "";
+    },
+    confirmError() {
+      this.inputisInvalid = false;
     },
   },
 };

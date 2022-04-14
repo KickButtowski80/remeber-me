@@ -42,8 +42,14 @@ export default {
     submitData() {
       const title = this.title;
       const description = this.description;
-      const link = this.link;    
+      const link = this.link;
       this.addResource(title, description, link);
+      this.clearFields();
+    },
+    clearFields() {
+      this.title = "";
+      this.description = "";
+      this.link = "";
     },
   },
 };

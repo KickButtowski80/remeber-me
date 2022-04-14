@@ -10,7 +10,9 @@
     </base-button>
   </base-card>
 
-  <component :is="currentTab"></component>
+  <keep-alive>
+    <component :is="currentTab"></component>
+  </keep-alive>
 </template>
 
 <script>
@@ -54,7 +56,7 @@ export default {
         title: title,
         description: description,
         link: url,
-      }; 
+      };
       this.storedResources.unshift(newResource);
       this.currentTab = "StoredResources";
     },

@@ -9,9 +9,8 @@
       {{ tab }}
     </base-button>
   </base-card>
-  
-    <component :is="currentTab"></component>
-  
+
+  <component :is="currentTab"></component>
 </template>
 
 <script>
@@ -22,6 +21,7 @@ export default {
   provide() {
     return {
       resources: this.storedResources,
+      addResource: this.addResource,
     };
   },
   data() {
@@ -47,6 +47,16 @@ export default {
   methods: {
     setMode(tab) {
       return { button: this.currentTab === tab, flat: this.currentTab !== tab };
+    },
+    addResource(title, description, url) {
+      let newResource = {
+        id: new Date().toISOString(),
+        title: title,
+        description: description,
+        link: url,
+      }; 
+      this.storedResources.unshift(newResource);
+      this.currentTab = "StoredResources";
     },
   },
 };

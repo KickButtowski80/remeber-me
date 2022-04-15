@@ -61,7 +61,7 @@ export default {
       const title = this.title;
       const description = this.description;
       const link = this.link;
-      console.warn(this.validateFields(title, description, link));
+     
       if (this.validateFields(title, description, link) === false) {
         this.inputisInvalid = true;
         return;

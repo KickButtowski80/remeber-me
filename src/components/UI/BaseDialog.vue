@@ -27,6 +27,7 @@ export default {
     title: {
       type: String,
       requried: false,
+      description: "title is optional because it can be provided by slot",
     },
   },
   emits: ["close"],
@@ -40,7 +41,7 @@ div {
   left: 0;
   height: 100vh;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(121, 109, 109, 0.75);
   z-index: 10;
 }
 

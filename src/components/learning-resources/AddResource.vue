@@ -58,31 +58,30 @@ export default {
   },
   methods: {
     submitData() {
-      console.log("submit data ");
-      if (!this.validateFields()) {
-        this.inputisInvalid = true;
-        return;
-      }
-
       const title = this.title;
       const description = this.description;
       const link = this.link;
+      console.warn(this.validateFields(title, description, link));
+      if (this.validateFields(title, description, link) === false) {
+        this.inputisInvalid = true;
+        return;
+      }
 
       this.addResource(title, description, link);
       this.clearFields();
     },
 
-    validateFields() {
+    validateFields(title, description, url) {
       if (
-        this.check4EmptyField(this.title) ||
-        this.check4EmptyField(this.description) ||
-        this.check4EmptyField(this.url)
+        this.check4EmptyField(title) ||
+        this.check4EmptyField(description) ||
+        this.check4EmptyField(url)
       ) {
         return false;
       }
     },
     check4EmptyField(fieldName) {
-      return fieldName.trim() === "";
+      return fieldName.trim().length === 0;
     },
     clearFields() {
       this.title = "";

@@ -10,6 +10,7 @@
       viewBox="0 0 512 512"
       style="enable-background: new 0 0 512 512"
       xml:space="preserve"
+       height="34.703"
     >
       <rect
         x="114.402"

@@ -65,7 +65,9 @@ export default {
     removeResource(title) {
       const resIndex = this.storedResources.findIndex( r => r.title === title)
       this.storedResources.splice(resIndex, 1)
-      
+    },
+    editResource() {
+      this.currentTab='EditResource'
     }
   },
 };

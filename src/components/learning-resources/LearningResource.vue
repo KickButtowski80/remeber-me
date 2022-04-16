@@ -4,12 +4,16 @@
       <h3>{{ title }}</h3>
       <header>
         <base-button v-on:click="deleteResource">
-          Delete
+          <template v-slot:iconName>
+            <h5>Delete</h5>
+          </template>
           <delete-icon></delete-icon>
         </base-button>
 
         <base-button>
-          Edit
+          <template v-slot:iconName>
+            <h5>Edit</h5>
+          </template>
           <edit-icon></edit-icon>
         </base-button>
       </header>

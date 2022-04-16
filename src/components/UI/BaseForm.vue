@@ -33,7 +33,9 @@
       />
     </div>
     <div>
-      <slot name="actions"> </slot>
+      <slot name="actions"> 
+         <base-button @click="$emit('close')">Close</base-button>
+      </slot>
     </div>
   </form>
 </template>

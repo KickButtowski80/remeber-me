@@ -1,5 +1,6 @@
 <template>
   <button v-bind:type="type" v-bind:class="mode">
+    <slot name='iconName'></slot>
     <slot></slot>
   </button>
 </template>

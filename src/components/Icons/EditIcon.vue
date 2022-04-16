@@ -6,9 +6,11 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     x="0px"
     y="0px"
-    viewBox="0 0 489.627 489.627"
-    style="enable-background: new 0 0 489.627 489.627"
+    viewBox="0 0 512 512"
+    style="enable-background: new 0 0 512 512"
     xml:space="preserve"
+   
+    height="34.703"
   >
     <g>
       <path

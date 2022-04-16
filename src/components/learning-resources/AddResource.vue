@@ -7,7 +7,7 @@
     <template v-slot:default>
       <p>Unfortunately, at least one input value is invalid</p>
       <p>
-        Please check all inputs and be sure, you added few charcters in each
+        Please check all inputs and be sure, you added a few charcters in each
         input field
       </p>
     </template>
@@ -61,7 +61,7 @@ export default {
       const title = this.title;
       const description = this.description;
       const link = this.link;
-     
+
       if (this.validateFields(title, description, link) === false) {
         this.inputisInvalid = true;
         return;

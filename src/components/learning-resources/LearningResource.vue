@@ -3,7 +3,7 @@
     <base-card>
       <header>
         <h3>{{ title }}</h3>
-        <base-button>
+        <base-button v-on:click='deleteResource'>
           Delete
           <delete-icon></delete-icon>
         </base-button>
@@ -19,6 +19,12 @@
 <script>
 export default {
   props: ["title", "description", "link"],
+  inject:['removeResource'],
+  methods: {
+    deleteResource(){
+      this.removeResource(this.title);
+    }
+  }
 };
 </script>
 

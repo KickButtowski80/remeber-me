@@ -15,7 +15,7 @@
     <menu>
       <slot name="actions">
         <!-- fallback conetnet -->
-        <base-button @click="$emit('close')">Close</base-button>
+        <base-button  @click="$emit('close')">Close</base-button>
       </slot>
     </menu>
   </dialog>
@@ -80,6 +80,9 @@ menu {
   justify-content: flex-end;
   margin: 0;
 }
+
+
+
 
 @media (min-width: 768px) {
   dialog {

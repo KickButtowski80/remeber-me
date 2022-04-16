@@ -19,6 +19,8 @@ button {
   border: 1px solid #412b4f;
   color: white;
   cursor: pointer;
+  border-radius: 25px; 
+
 }
 
 button:hover,

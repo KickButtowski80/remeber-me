@@ -24,6 +24,7 @@ export default {
     return {
       resources: this.storedResources,
       addResource: this.addResource,
+      removeResource: this.removeResource,
     };
   },
   data() {
@@ -60,6 +61,11 @@ export default {
       this.storedResources.unshift(newResource);
       this.currentTab = "StoredResources";
     },
+    removeResource(title) {
+      const resIndex = this.storedResources.findIndex( r => r.title === title)
+      this.storedResources.splice(resIndex, 1)
+      
+    }
   },
 };
 </script>

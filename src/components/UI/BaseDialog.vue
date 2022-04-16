@@ -1,28 +1,26 @@
 <template>
-
- <teleport to='body'>
-
-  <!-- dialog backdrop section -->
-  <div @click="$emit('close')"></div>
-  <dialog open>
-    <header>
-      <slot name="header">
-        <h2>
-          {{ title }}
-        </h2>
-      </slot>
-    </header>
-    <section>
-      <slot></slot>
-    </section>
-    <menu>
-      <slot name="actions">
-        <!-- fallback conetnet -->
-        <base-button  @click="$emit('close')">Close</base-button>
-      </slot>
-    </menu>
-  </dialog>
- </teleport>
+  <teleport to="body">
+    <!-- dialog backdrop section -->
+    <div @click="$emit('close')"></div>
+    <dialog open>
+      <header>
+        <slot name="header">
+          <h2>
+            {{ title }}
+          </h2>
+        </slot>
+      </header>
+      <section>
+        <slot></slot>
+      </section>
+      <menu>
+        <slot name="actions">
+          <!-- fallback conetnet -->
+          <base-button @click="$emit('close')">Close</base-button>
+        </slot>
+      </menu>
+    </dialog>
+  </teleport>
 </template>
 
 <script>
@@ -84,9 +82,6 @@ menu {
   justify-content: flex-end;
   margin: 0;
 }
-
-
-
 
 @media (min-width: 768px) {
   dialog {

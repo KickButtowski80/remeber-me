@@ -1,11 +1,16 @@
 <template>
   <li>
     <base-card>
+      <h3>{{ title }}</h3>
       <header>
-        <h3>{{ title }}</h3>
-        <base-button v-on:click='deleteResource'>
+        <base-button v-on:click="deleteResource">
           Delete
           <delete-icon></delete-icon>
+        </base-button>
+
+        <base-button>
+          Edit
+          <edit-icon></edit-icon>
         </base-button>
       </header>
       <p>{{ description }}</p>
@@ -19,12 +24,12 @@
 <script>
 export default {
   props: ["title", "description", "link"],
-  inject:['removeResource'],
+  inject: ["removeResource"],
   methods: {
-    deleteResource(){
+    deleteResource() {
       this.removeResource(this.title);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -36,7 +41,7 @@ li {
 
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 

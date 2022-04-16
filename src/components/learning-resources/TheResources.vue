@@ -18,8 +18,9 @@
 <script>
 import StoredResources from "./StoredResources.vue";
 import AddResource from "./AddResource.vue";
+import EditResource from './EditResource.vue';
 export default {
-  components: { StoredResources, AddResource },
+  components: { StoredResources, AddResource, EditResource },
   provide() {
     return {
       resources: this.storedResources,
@@ -30,7 +31,7 @@ export default {
   data() {
     return {
       currentTab: "StoredResources",
-      tabs: ["StoredResources", "AddResource"],
+      tabs: ["StoredResources", "AddResource", "EditResource"],
       storedResources: [
         {
           id: "official-guide",

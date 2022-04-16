@@ -95,7 +95,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 label {
   font-weight: bold;
   display: block;

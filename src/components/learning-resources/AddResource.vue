@@ -17,14 +17,7 @@
     </template>
   </base-dialog>
   <base-card>
-    <base-form type="add">
-      <template v-slot:actions>
-        <div>
-          <base-button type="submit"> Add Resource</base-button>
-        </div>
-      </template>
-    </base-form>
-    <!-- <form v-on:submit.prevent="submitData">
+    <form v-on:submit.prevent="submitData">
       <div class="form-control">
         <label for="title">Title</label>
         <input type="text" name="title" id="title" v-model="title" />
@@ -48,7 +41,7 @@
       <div>
         <base-button type="submit"> Add Resource</base-button>
       </div>
-    </form> -->
+    </form>
   </base-card>
 </template>
 

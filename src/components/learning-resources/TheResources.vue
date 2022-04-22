@@ -11,16 +11,15 @@
   </base-card>
   <keep-alive>
     <div>
-      <!-- <base-dialog
+      <base-dialog
         title="Error"
-        v-if="showErrorDialog(currentTab)"
+        v-if="disabledTab"
         @close="confirmError"
       >
         <template v-slot:default>
           {{ message }}
         </template>
-      </base-dialog> -->
-       {{currentTab.includes(tempTabs)}}
+      </base-dialog>
       <component :is="currentTab"></component>
     </div>
   </keep-alive>
@@ -64,19 +63,22 @@ export default {
       ],
       editCurrentResource: {},
       message: "",
+      disabledTab: false,
     };
   },
+  computed: {},
   methods: {
-    showErrorDialog(currTab) {
-      debugger;
-      return currTab === "EditResource";
+    confirmError() {
+      this.disabledTab = false;
     },
     selectCurrent(tab) {
-      // if (tab === "EditResource") {
-      //   this.message =
-      //     "you cannot edit by clicking on tab. try an item edit button";
-      //   return;
-      // }
+      if (tab === "EditResource") {
+        this.disabledTab = true;
+        this.message =
+          "you cannot edit by clicking on tab." + 
+          "try any item edit button in the stored resources tab";
+        return;
+      }
       this.currentTab = tab;
     },
     setMode(tab) {

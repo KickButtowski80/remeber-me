@@ -3,15 +3,26 @@
     <base-button
       v-for="tab in tabs"
       :key="tab"
-      @click="currentTab = tab"
+      @click="selectCurrent(tab)"
       :mode="setMode(tab)"
     >
       {{ tab }}
     </base-button>
   </base-card>
-
   <keep-alive>
-    <component :is="currentTab"></component>
+    <div>
+      <!-- <base-dialog
+        title="Error"
+        v-if="showErrorDialog(currentTab)"
+        @close="confirmError"
+      >
+        <template v-slot:default>
+          {{ message }}
+        </template>
+      </base-dialog> -->
+       {{currentTab.includes(tempTabs)}}
+      <component :is="currentTab"></component>
+    </div>
   </keep-alive>
 </template>
 
@@ -19,6 +30,7 @@
 import StoredResources from "./StoredResources.vue";
 import AddResource from "./AddResource.vue";
 import EditResource from "./EditResource.vue";
+
 export default {
   components: { StoredResources, AddResource, EditResource },
   provide() {
@@ -34,6 +46,7 @@ export default {
   data() {
     return {
       currentTab: "StoredResources",
+      tempTabs: ["StoredResources", "AddResource"],
       tabs: ["StoredResources", "AddResource", "EditResource"],
       storedResources: [
         {
@@ -50,9 +63,22 @@ export default {
         },
       ],
       editCurrentResource: {},
+      message: "",
     };
   },
   methods: {
+    showErrorDialog(currTab) {
+      debugger;
+      return currTab === "EditResource";
+    },
+    selectCurrent(tab) {
+      // if (tab === "EditResource") {
+      //   this.message =
+      //     "you cannot edit by clicking on tab. try an item edit button";
+      //   return;
+      // }
+      this.currentTab = tab;
+    },
     setMode(tab) {
       return { button: this.currentTab === tab, flat: this.currentTab !== tab };
     },

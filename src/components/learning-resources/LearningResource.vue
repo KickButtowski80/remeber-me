@@ -10,7 +10,7 @@
           <delete-icon></delete-icon>
         </base-button>
 
-        <base-button>
+        <base-button v-on:click="editResource">
           <template v-slot:iconName>
             <h5>Edit</h5>
           </template>
@@ -28,10 +28,19 @@
 <script>
 export default {
   props: ["title", "description", "link"],
-  inject: ["removeResource"],
+  inject: ["removeResource", "reviseResource", "startEditResource"],
   methods: {
     deleteResource() {
       this.removeResource(this.title);
+    },
+
+    editResource() {
+      const resource = {
+        title: this.title,
+        description: this.description,
+        link: this.link,
+      };
+      this.startEditResource(resource);
     },
   },
 };

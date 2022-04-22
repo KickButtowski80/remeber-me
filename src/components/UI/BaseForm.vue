@@ -6,7 +6,7 @@
         type="text"
         name="title"
         id="title"
-        v-model="title"
+        :value='title'
         disabled="nonEditable"
       />
     </div>
@@ -19,7 +19,7 @@
         cols="30"
         rows="3"
         :value="description"
-        @input="description = $event.target.value"
+        @change="emitDescriptionToParent"
       ></textarea>
     </div>
     <div class="form-control">
@@ -28,7 +28,7 @@
         type="url"
         name="link"
         id="link"
-        v-model="link"
+        :value='link'
         disabled="nonEditable"
       />
     </div>
@@ -42,11 +42,17 @@
 
 <script>
 export default {
-  props: ["type"],
+  props: ["type", 'title', 'description', 'link'],
+  emits: ['set-new-description'],
   computed: {
     nonEditable() {
       return this.type === "edit";
     },
   },
+  methods:{
+    emitDescriptionToParent(event) { 
+      this.$emit('set-new-description', event.target.value)
+    }
+  }
 };
 </script>

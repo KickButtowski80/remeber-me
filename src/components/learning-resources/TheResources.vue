@@ -18,7 +18,7 @@
 <script>
 import StoredResources from "./StoredResources.vue";
 import AddResource from "./AddResource.vue";
-import EditResource from './EditResource.vue';
+import EditResource from "./EditResource.vue";
 export default {
   components: { StoredResources, AddResource, EditResource },
   provide() {
@@ -26,6 +26,9 @@ export default {
       resources: this.storedResources,
       addResource: this.addResource,
       removeResource: this.removeResource,
+      startEditResource: this.startEditResource,
+      reviseResource: this.reviseResource,
+      editCurrentResource: this.editCurrentResource,
     };
   },
   data() {
@@ -46,6 +49,7 @@ export default {
           link: "https://google.com",
         },
       ],
+      editCurrentResource: {},
     };
   },
   methods: {
@@ -63,12 +67,24 @@ export default {
       this.currentTab = "StoredResources";
     },
     removeResource(title) {
-      const resIndex = this.storedResources.findIndex( r => r.title === title)
-      this.storedResources.splice(resIndex, 1)
+      const resIndex = this.storedResources.findIndex((r) => r.title === title);
+      this.storedResources.splice(resIndex, 1);
     },
-    editResource() {
-      this.currentTab='EditResource'
-    }
+    startEditResource(resource) {
+      Object.assign(this.editCurrentResource, resource);
+      this.currentTab = "EditResource";
+    },
+    reviseResource(currentRes, changedDes) {
+      currentRes.description = changedDes;
+      const lookedupResIdx = this.storedResources.findIndex(
+        (res) => res.title === currentRes.title
+      );
+
+      this.storedResources.splice(lookedupResIdx, 1);
+      this.storedResources.splice(lookedupResIdx, 0, currentRes);
+
+      this.currentTab = "StoredResources";
+    },
   },
 };
 </script>

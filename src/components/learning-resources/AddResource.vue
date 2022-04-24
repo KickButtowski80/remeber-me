@@ -10,6 +10,7 @@
         Please check all inputs and be sure, you added a few charcters in each
         input field
       </p>
+      <p>Please try again :)</p>
     </template>
 
     <template v-slot:actions>

@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  props: ["title", "description", "link"],
+  props: ["title", "description", "link", "index"],
   inject: ["removeResource", "reviseResource", "startEditResource"],
   methods: {
     deleteResource() {
@@ -36,11 +36,12 @@ export default {
 
     editResource() {
       const resource = {
+        index: this.index,
         title: this.title,
         description: this.description,
         link: this.link,
       };
-      this.startEditResource(resource);
+      this.startEditResource(resource, this.index);
     },
   },
 };

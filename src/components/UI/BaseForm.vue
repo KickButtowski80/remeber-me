@@ -7,7 +7,7 @@
         name="title"
         id="title"
         :value="title"
-        disabled="1===2"
+        :disabled="nonEditable"
       />
     </div>
 
@@ -29,7 +29,7 @@
         name="link"
         id="link"
         :value="link"
-        disabled="nonEditable"
+        :disabled="nonEditable"
       />
     </div>
     <div>
@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     nonEditable() {
-      return this.type !== "edit";
+      return this.type === "edit";
     },
   },
   methods: {

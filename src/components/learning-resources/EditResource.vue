@@ -2,7 +2,7 @@
   <base-card>
     <h1>Edit Resource</h1>
     <base-form
-      :type="edit"
+      type="edit"
       :="currRes"
       v-on:set-new-description="gotNewDescription"
     >

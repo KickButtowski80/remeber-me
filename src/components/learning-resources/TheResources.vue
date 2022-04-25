@@ -104,12 +104,14 @@ export default {
     },
     reviseResource(currentRes, changedDes) {
       currentRes.description = changedDes;
-      const lookedupResIdx = this.storedResources.findIndex(
-        (res) => res.title === currentRes.title
-      );
+      this.storedResources[currentRes.index].description = changedDes;
+      this.storedResources = [...this.storedResources];
+      // const lookedupResIdx = this.storedResources.findIndex(
+      //   (res) => res.title === currentRes.title
+      // );
 
-      this.storedResources.splice(lookedupResIdx, 1);
-      this.storedResources.splice(lookedupResIdx, 0, currentRes);
+      // this.storedResources.splice(lookedupResIdx, 1);
+      // this.storedResources.splice(lookedupResIdx, 0, currentRes);
 
       this.currentTab = "StoredResources";
     },

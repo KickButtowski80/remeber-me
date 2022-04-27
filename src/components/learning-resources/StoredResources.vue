@@ -2,11 +2,16 @@
   <base-card v-if="checkResourcesLength">
     <span>please add at least a resource</span>
     <template v-slot:icon>
-      <open-empty-folder style='display:inline-block'></open-empty-folder>
+      <open-empty-folder style="display: inline-block"></open-empty-folder>
     </template>
   </base-card>
   <ul>
-    <learning-resource v-for="res in resources" :key="res.id" :="{ ...res }">
+    <learning-resource
+      v-for="(res, index) in resources"
+      :index="index"
+      :key="res.id"
+      :="{ ...res }"
+    >
     </learning-resource>
   </ul>
 </template>

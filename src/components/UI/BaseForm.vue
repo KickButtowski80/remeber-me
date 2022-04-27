@@ -7,7 +7,7 @@
         name="title"
         id="title"
         :value="title"
-        disabled="1===2"
+        :disabled="nonEditable"
       />
     </div>
 
@@ -29,7 +29,7 @@
         name="link"
         id="link"
         :value="link"
-        disabled="nonEditable"
+        :disabled="nonEditable"
       />
     </div>
     <div>
@@ -45,11 +45,10 @@ export default {
   props: ["type", "title", "description", "link"],
   emits: ["set-new-description"],
   mounted() {
-    // debugger;
   },
   computed: {
     nonEditable() {
-      return this.type !== "edit";
+      return this.type === "edit";
     },
   },
   methods: {

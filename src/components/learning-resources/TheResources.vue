@@ -11,11 +11,7 @@
   </base-card>
   <keep-alive>
     <div>
-      <base-dialog
-        title="Error"
-        v-if="disabledTab"
-        @close="confirmError"
-      >
+      <base-dialog title="Error" v-if="disabledTab" @close="confirmError">
         <template v-slot:default>
           {{ message }}
         </template>
@@ -66,16 +62,21 @@ export default {
       disabledTab: false,
     };
   },
-  computed: {},
+  computed: {
+    tabStatus() {
+      if (this.currentTab === "EditResource") return this.disabledTab;
+      return "";
+    },
+  },
   methods: {
     confirmError() {
       this.disabledTab = false;
     },
     selectCurrent(tab) {
-      if (tab === "EditResource") {
+      if (tab === "EditResource" && this.currentTab !== "EditResource") {
         this.disabledTab = true;
         this.message =
-          "you cannot edit by clicking on tab." + 
+          "you cannot edit by clicking on tab." +
           "try any item edit button in the stored resources tab";
         return;
       }
@@ -104,12 +105,8 @@ export default {
     },
     reviseResource(currentRes, changedDes) {
       currentRes.description = changedDes;
-      const lookedupResIdx = this.storedResources.findIndex(
-        (res) => res.title === currentRes.title
-      );
-
-      this.storedResources.splice(lookedupResIdx, 1);
-      this.storedResources.splice(lookedupResIdx, 0, currentRes);
+      this.storedResources[currentRes.index].description = changedDes;
+      this.storedResources = [...this.storedResources];
 
       this.currentTab = "StoredResources";
     },

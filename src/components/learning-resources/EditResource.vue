@@ -1,8 +1,9 @@
 <template>
-  <base-card>
+  <base-card ref="editForm">
     <h1>Edit Resource</h1>
+    status: {{ disabledTab }}
     <base-form
-      :type="edit"
+      type="edit"
       :="currRes"
       v-on:set-new-description="gotNewDescription"
     >
@@ -15,7 +16,7 @@
 
 <script>
 export default {
-  inject: ["reviseResource", "editCurrentResource"],
+  inject: [ "reviseResource", "editCurrentResource"],
   data() {
     return {
       currRes: this.editCurrentResource,

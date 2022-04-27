@@ -45,7 +45,6 @@ export default {
   props: ["type", "title", "description", "link"],
   emits: ["set-new-description"],
   mounted() {
-    // debugger;
   },
   computed: {
     nonEditable() {

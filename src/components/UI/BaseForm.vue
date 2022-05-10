@@ -54,8 +54,7 @@ export default {
     },
   },
   methods: {
-    emitTitleToParent(event){
-      // debugger;
+    emitTitleToParent(event){   
       this.$emit('set-new-title', event.target.value)
     },
     emitDescriptionToParent(event) {

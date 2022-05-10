@@ -61,7 +61,7 @@ export default {
       const description = this.description;
       const link = this.link;
       console.log(this.validateFields(title, description, link));
-      if (!this.validateFields(title, description, link)) {
+      if (this.validateFields(title, description, link)) {
         this.inputisInvalid = true;
         return;
       }
@@ -69,14 +69,15 @@ export default {
       this.clearFields();
     },
     validateFields(title, description, url) {
+      // if all the fields are empty return true
       if (
         this.check4EmptyField(title) ||
         this.check4EmptyField(description) ||
         this.check4EmptyField(url)
       ) {
-        return false;
+        return true;
       }
-      return true;
+
     },
     check4EmptyField(fieldName) {
       return fieldName.trim().length === 0;

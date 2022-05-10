@@ -32,31 +32,6 @@
         </div>
       </template>
     </base-form>
-    <!-- <form v-on:submit.prevent="submitData">
-      <div class="form-control">
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title" v-model="title" />
-      </div>
-
-      <div class="form-control">
-        <label for="description">Description</label
-        ><textarea
-          name="description"
-          id="description"
-          cols="30"
-          rows="3"
-          :value="description"
-          @input="description = $event.target.value"
-        ></textarea>
-      </div>
-      <div class="form-control">
-        <label for="link">Link</label>
-        <input type="url" name="link" id="link" v-model="link" />
-      </div>
-      <div>
-        <base-button type="submit"> Add Resource</base-button>
-      </div>
-    </form> -->
   </base-card>
 </template>
 

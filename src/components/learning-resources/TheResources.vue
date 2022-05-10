@@ -78,6 +78,7 @@ export default {
         this.message =
           "you cannot edit by clicking on tab." +
           "try any item edit button in the stored resources tab";
+          this.currentTab = "StoredResources";
         return;
       }
       this.currentTab = attempedTab;

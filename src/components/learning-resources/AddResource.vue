@@ -18,10 +18,17 @@
     </template>
   </base-dialog>
   <base-card>
-    <base-form type="add">
+    <base-form
+      type="add"
+      v-on:set-new-title="gotNewTitle"
+      v-on:set-new-description="gotNewDescription"
+      v-on:set-new-link="gotNewLink"
+    >
       <template v-slot:actions>
         <div>
-          <base-button type="submit"> Add Resource</base-button>
+          <base-button type="submit" @click="finalaizedAddition">
+            Add Resource
+          </base-button>
         </div>
       </template>
     </base-form>
@@ -65,20 +72,27 @@ export default {
     };
   },
   methods: {
-    submitData() {
+    gotNewTitle(newTit) {
+      this.title = newTit;
+    },
+    gotNewDescription(newDes) {
+      this.description = newDes;
+    },
+    gotNewLink(newLink) {
+      this.link = newLink;
+    },
+    finalaizedAddition() {
       const title = this.title;
       const description = this.description;
       const link = this.link;
-
-      if (this.validateFields(title, description, link) === false) {
+      console.log(this.validateFields(title, description, link));
+      if (!this.validateFields(title, description, link)) {
         this.inputisInvalid = true;
         return;
       }
-
       this.addResource(title, description, link);
       this.clearFields();
     },
-
     validateFields(title, description, url) {
       if (
         this.check4EmptyField(title) ||
@@ -87,6 +101,7 @@ export default {
       ) {
         return false;
       }
+      return true;
     },
     check4EmptyField(fieldName) {
       return fieldName.trim().length === 0;

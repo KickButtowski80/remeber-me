@@ -7,13 +7,14 @@
         name="title"
         id="title"
         :value="title"
+        @change='emitTitleToParent'
         :disabled="nonEditable"
       />
     </div>
 
     <div class="form-control">
-      <label for="description">Description</label
-      ><textarea
+      <label for="description">Description</label>
+      <textarea
         name="description"
         id="description"
         cols="30"
@@ -29,6 +30,7 @@
         name="link"
         id="link"
         :value="link"
+        @change='emitLinkToParent'
         :disabled="nonEditable"
       />
     </div>
@@ -43,7 +45,7 @@
 <script>
 export default {
   props: ["type", "title", "description", "link"],
-  emits: ["set-new-description"],
+  emits: ['set-new-title', "set-new-description", 'set-new-link'],
   mounted() {
   },
   computed: {
@@ -52,9 +54,16 @@ export default {
     },
   },
   methods: {
+    emitTitleToParent(event){
+      // debugger;
+      this.$emit('set-new-title', event.target.value)
+    },
     emitDescriptionToParent(event) {
       this.$emit("set-new-description", event.target.value);
     },
+    emitLinkToParent(event) {
+      this.$emit('set-new-link', event.target.value)
+    }
   },
 };
 </script>

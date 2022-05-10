@@ -1,14 +1,15 @@
 <template>
   <base-card ref="editForm">
     <h1>Edit Resource</h1>
-    status: {{ disabledTab }}
     <base-form
       type="edit"
       :="currRes"
       v-on:set-new-description="gotNewDescription"
     >
       <template v-slot:actions>
-        <base-button @click="finalaizedEdit">Edit Resource</base-button>
+        <base-button @click="finalaizedEdit">
+          Edit Resource
+        </base-button>
       </template>
     </base-form>
   </base-card>

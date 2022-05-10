@@ -72,15 +72,15 @@ export default {
     confirmError() {
       this.disabledTab = false;
     },
-    selectCurrent(tab) {
-      if (tab === "EditResource" && this.currentTab !== "EditResource") {
+    selectCurrent(attempedTab) {
+      if (attempedTab === "EditResource" && this.currentTab !== "EditResource") {
         this.disabledTab = true;
         this.message =
           "you cannot edit by clicking on tab." +
           "try any item edit button in the stored resources tab";
         return;
       }
-      this.currentTab = tab;
+      this.currentTab = attempedTab;
     },
     setMode(tab) {
       return { button: this.currentTab === tab, flat: this.currentTab !== tab };

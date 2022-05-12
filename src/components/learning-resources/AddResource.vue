@@ -71,8 +71,8 @@ export default {
     validateFields(title, description, url) {
       // if all the fields are empty return true
       if (
-        this.check4EmptyField(title) ||
-        this.check4EmptyField(description) ||
+        this.check4EmptyField(title) &&
+        this.check4EmptyField(description) &&
         this.check4EmptyField(url)
       ) {
         return true;
